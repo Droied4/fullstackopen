@@ -1,4 +1,4 @@
-# 0.4: Nuevo diagrama de nota
+# 0.4: New note diagram
 ```mermaid
   sequenceDiagram
     participant browser
@@ -37,7 +37,7 @@
 
 ```
 
-# 0.5: Diagrama de aplicación de una sola página
+# 0.5: Single page app diagram
 ```mermaid
 
 sequenceDiagram
@@ -77,7 +77,7 @@ sequenceDiagram
 
 ```
 
-# 0.6: Nueva nota en diagrama de aplicación de una sola pagina
+# 0.6: New note in Single page app diagram
 ```mermaid
 sequenceDiagram
     participant browser
