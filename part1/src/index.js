@@ -22,18 +22,24 @@ const Ft_button = ({name, type, setter}) => {
 	)
 }
 
+const StatisticLine = ({text, value}) => {
+	return (
+			<p>{text} : {value} </p>
+	)
+}
+
 const DisplayStats = ({good, neutral, bad, all}) => {
 	return (
 		<>
 	  	<h1>Statistics</h1>
 		 {all ? (
 		<>
-			<p>good : {good} </p>
-	  		<p>neutral : {neutral} </p>
-	  		<p>bad : {bad} </p>
-			<p>all : {all} </p>
-	  		<p>average : {Average(good, bad, all)}</p> 
-	  		<p>positive : {PositiveComments(good, all)}</p> 
+			<StatisticLine text="good" value={good} />
+			<StatisticLine text="neutral" value={neutral} />
+			<StatisticLine text="bad" value={bad} />
+			<StatisticLine text="all" value={all} />
+			<StatisticLine text="average" value={Average(good, bad, all)} />
+			<StatisticLine text="positive" value={PositiveComments(good, all)} />
 		</>
       			) : (
         	<p>No Feedback Given </p>
