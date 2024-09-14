@@ -2,10 +2,35 @@ import React from 'react';
 import { useState } from 'react'
 import { createRoot } from 'react-dom/client';
 
+const Average = (good, bad, all) => {
+	if (all == 0)
+		return (0);
+	return ( ((good - bad) / all));
+}
+
+const PositiveComments = (good, all) => {
+	if (all == 0)
+		return ("0%");
+	return ( ((good / all) * 100) + "%");
+}
+
 const Ft_button = ({name, type, setter}) => {
 	return (
 		<> 
 		<button onClick={() => setter(type + 1)} >{name}</button>
+		</>
+	)
+}
+
+const DisplayStats = ({good, neutral, bad, all}) => {
+	return (
+		<>
+			<p>good : {good} </p>
+	  		<p>neutral : {neutral} </p>
+	  		<p>bad : {bad} </p>
+			<p>all : {all} </p>
+	  		<p>average : {Average(good, bad, all)}</p> 
+	  		<p>positive : {PositiveComments(good, all)}</p> 
 		</>
 	)
 }
@@ -15,6 +40,7 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  let all = good + neutral + bad
 
   return (
     <div>
@@ -23,9 +49,7 @@ const App = () => {
 	  <Ft_button name="neutral" type={neutral} setter={setNeutral}/>
 	  <Ft_button name="bad" type={bad} setter={setBad}/>
 	  <h1>Statistics</h1>
-	  <p>good : {good} </p>
-	  <p>neutral : {neutral} </p>
-	  <p>bad : {bad} </p>
+	  <DisplayStats good={good} neutral={neutral} bad={bad} all={all}/>
     </div>
   )
 }
