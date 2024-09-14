@@ -25,6 +25,7 @@ const Ft_button = ({name, type, setter}) => {
 const DisplayStats = ({good, neutral, bad, all}) => {
 	return (
 		<>
+	  		<h1>Statistics</h1>
 			<p>good : {good} </p>
 	  		<p>neutral : {neutral} </p>
 	  		<p>bad : {bad} </p>
@@ -48,7 +49,6 @@ const App = () => {
 	  <Ft_button name="good" type={good} setter={setGood}/>
 	  <Ft_button name="neutral" type={neutral} setter={setNeutral}/>
 	  <Ft_button name="bad" type={bad} setter={setBad}/>
-	  <h1>Statistics</h1>
 	  <DisplayStats good={good} neutral={neutral} bad={bad} all={all}/>
     </div>
   )
