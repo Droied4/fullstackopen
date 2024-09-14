@@ -1,69 +1,34 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+import { useState } from 'react'
 import { createRoot } from 'react-dom/client';
 
-const Header = (props) => {	
-	console.log(props)
+const Ft_button = ({name, type, setter}) => {
 	return (
-	<h1>{props.course.name}</h1>
-	)
-}	
-
-const Part = (props) => {
-	console.log(props)
-	return (
-	<p>
-		{props.name}: {props.exercises}
-	</p>
+		<> 
+		<button onClick={() => setter(type + 1)} >{name}</button>
+		</>
 	)
 }
-const Content = (props) => {
-	console.log(props)
-	return (
-	<div>
-		{props.parts.map((part, index)=> (
-			<Part key={index} name={part.name} exercises={part.exercises}/>
-		))}
-	</div>
-	)
-} 
 
-const Total = (props) => {
-	const numberof = 'Number of exercises'
-	const total_exercises = props.parts.reduce((sum, part) => sum + part.exercises, 0)
-	console.log(props)
-	return(
-      	<p> {numberof} {total_exercises} </p>
-	)
-}
 const App = () => {
-  
-const course = {
-	name : 'Half Stack application development',
-	parts : [
-	{
-		name : 'Fundamentals of React',
-		exercises : 10
-	},
-	{
-		name : 'Using props to pass data',
-		exercises : 7
-	},
-	{
-		name : 'State of a component',
-		exercises : 14
-	}
-  ]	 
- }
+  // guarda los clics de cada botón en su propio estado
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-	return (
+  return (
     <div>
-	  <Header  course={course} />
-	  <Content parts={course.parts} />
-	  <Total   parts={course.parts} />
+	  <h1>Give Feedback</h1>
+	  <Ft_button name="good" type={good} setter={setGood}/>
+	  <Ft_button name="neutral" type={neutral} setter={setNeutral}/>
+	  <Ft_button name="bad" type={bad} setter={setBad}/>
+	  <h1>Statistics</h1>
+	  <p>good : {good} </p>
+	  <p>neutral : {neutral} </p>
+	  <p>bad : {bad} </p>
     </div>
   )
 }
 
 const root = createRoot(document.getElementById('root'));
-root.render(<App tab="home" />);
+root.render(<App tab="home" />); 
